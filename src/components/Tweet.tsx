@@ -4,16 +4,18 @@ import './Tweet.css';
 export interface TweetProps {
   user: string;
   content: string;
+  account: string;
+  imgURL: string;
 }
 
-export const Tweet = ({ user, content }: TweetProps) => {
+export const Tweet = ({ user, content, account, imgURL }: TweetProps) => {
   return (
     <a href="#" className="tweet">
-      <img src="https://github.com/tatacsd.png" alt={user} />
+      <img src={imgURL} alt={user} />
       <div className="tweet-content">
         <div className="tweet-content-header">
           <strong>{user}</strong>
-          <span>@{user}</span>
+          <span>@{account}</span>
         </div>
 
         {/* add text type that accepts breaklines */}

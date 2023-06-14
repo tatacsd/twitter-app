@@ -1,67 +1,45 @@
-import {
-  Bell,
-  BookmarkSimple,
-  DotsThreeCircle,
-  Envelope,
-  FileText,
-  Hash,
-  House,
-  Sparkle,
-  User,
-} from 'phosphor-react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import twitterLogo from './assets/logo-twitter.svg';
+import { Header } from './components/Header';
+import { Separator } from './components/Separator';
+import { Sidebar } from './components/Sidebar';
 import { Tweet } from './components/Tweet';
 import './global.css';
+
+const tweets = [
+  {
+    id: '1',
+    user: 'thays',
+    account: 'tatacsd',
+    imgURL: 'https://github.com/tatacsd.png',
+    content:
+      "Hi there! 🚀 Super excited to dive into building a Twitter clone using React! 🐦✨ It's the perfect opportunity to sharpen my skills and put my knowledge into practice. Can't wait to implement features like real-time updates, user authentication, and engaging UI. Stay tuned for updates on my #ReactTwitterClone journey! #CodingAdventures",
+  },
+  {
+    id: '2',
+    user: 'thays',
+    account: 'tatacsd',
+    imgURL: 'https://github.com/tatacsd.png',
+    content:
+      'Exciting update on my #ReactTwitterClone project! 🎉 Currently giving the home page a makeover with some serious code refactoring. 🛠️ Using componentization to enhance readability and make future maintenance a breeze. 🌟 Get ready for a sleek and seamless user experience! Stay tuned for more updates! #CodeRefactoring #ReactJS',
+  },
+  {
+    id: '3',
+    user: 'thays',
+    account: 'tatacsd',
+    imgURL: 'https://github.com/tatacsd.png',
+    content:
+      "🙇‍♂️ Apologies for the inconvenience! I want to be transparent about my #ReactTwitterClone project. 📱 Currently, it's not mobile-friendly, but I'm actively working on it! 🛠️ Making responsive design a top priority to ensure a seamless experience across all devices. Thank you for your patience, and stay tuned for the mobile-friendly version! #ComingSoon #ReactJS",
+  },
+];
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <div className="layout">
-      <aside className="sidebar">
-        <img className="logo" src={twitterLogo} alt="Logo" />
-        <nav className="main-navigation">
-          <a className="active" href="">
-            <House weight="fill" />
-            Home
-          </a>
-          <a href="">
-            <Hash />
-            Explore
-          </a>
-          <a href="">
-            <Bell />
-            Notifications
-          </a>
-          <a href="">
-            <Envelope />
-            Messages
-          </a>
-          <a href="">
-            <BookmarkSimple />
-            Bookmarks
-          </a>
-          <a href="">
-            <FileText />
-            Lists
-          </a>
-          <a href="">
-            <User />
-            Profile
-          </a>
-          <a href="">
-            <DotsThreeCircle />
-            More
-          </a>
-        </nav>
-        <button className="new-tweet">Twitter</button>
-      </aside>
+      <Sidebar />
       <div className="content">
         <main className="tagline">
-          <div className="timeline-header">
-            Home
-            <Sparkle />
-          </div>
+          <Header title="Home" />
           <form className="new-tweet-form">
             <label htmlFor="tweet">
               <img src="https://github.com/tatacsd.png" alt="Thays Casado" />
@@ -69,13 +47,17 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             </label>
             <button type="submit">Tweet</button>
           </form>
-          <div className="separator"></div>
-          <Tweet
-            user={'thays'}
-            content={
-              "Hi there! 🚀 Super excited to dive into building a Twitter clone using React! 🐦✨ It's the perfect opportunity to sharpen my skills and put my knowledge into practice. Can't wait to implement features like real-time updates, user authentication, and engaging UI. Stay tuned for updates on my #ReactTwitterClone journey! #CodingAdventures"
-            }
-          />
+          <Separator />
+
+          {tweets.map((tweet) => (
+            <Tweet
+              imgURL={tweet.imgURL}
+              key={tweet.id}
+              account={tweet.account}
+              content={tweet.content}
+              user={tweet.user}
+            />
+          ))}
         </main>
       </div>
     </div>
