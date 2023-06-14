@@ -12,6 +12,7 @@ import {
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import twitterLogo from './assets/logo-twitter.svg';
+import { Tweet } from './components/Tweet';
 import './global.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -61,7 +62,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             Home
             <Sparkle />
           </div>
-
           <form className="new-tweet-form">
             <label htmlFor="tweet">
               <img src="https://github.com/tatacsd.png" alt="Thays Casado" />
@@ -70,6 +70,12 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             <button type="submit">Tweet</button>
           </form>
           <div className="separator"></div>
+          <Tweet
+            user={'thays'}
+            content={
+              "Hi there! 🚀 Super excited to dive into building a Twitter clone using React! 🐦✨ It's the perfect opportunity to sharpen my skills and put my knowledge into practice. Can't wait to implement features like real-time updates, user authentication, and engaging UI. Stay tuned for updates on my #ReactTwitterClone journey! #CodingAdventures"
+            }
+          />
         </main>
       </div>
     </div>
